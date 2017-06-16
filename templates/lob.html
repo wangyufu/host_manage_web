@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% block bd1 %}
+    <div style="width: 1000px; margin: 0 auto">
+        <div class="table-responsive">
+            <table class="table  table-hover">
+                <thead>
+                <tr>
+                    {#                <th>id</th>#}
+                    <th>LOB业务线</th>
+                    <th>IP地址</th>
+                    <th>
+                        {#                模态框按钮#}
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#exampleModal">
+                            添加
+                        </button>
+                        &nbsp;操作
+
+                    </th>
+                    <th><a class="btn btn-info btn-sm" href="/index/re_add">添加</a>
+                        &nbsp;Interface 2
+
+                    </th>
+                </tr>
+                </thead>
+
+                {% for foo in lob_l %}
+                    <tr>
+
+                        {#                    <td target="id">{{ foo.id }}</td>#}
+                        <td target="lob">{{ foo.lob.title }}</td>
+                        <td target="ip">{{ foo.ip }}</td>
+
+                        <td>
+                            <button type="button" class="btn btn-warning" data-toggle="modal"
+                                    data-target="#exampleModal1"
+                                    data-whatever={{ foo.id }} data-id={{ foo.lob.id }}>
+                                编辑
+                            </button>
+
+                            <a href="/index/del?id={{ foo.id }}" class="btn btn-danger">删除</a>
+
+                        </td>
+                        <td>
+                            <a class="btn btn-warning"
+                               href="/index/re_edit_{{ foo.id }}">编辑</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+            </table>
+        </div>
+        <div style="text-align:center;">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    {{ page_info.page_str | safe }}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">添加</h4>
+                </div>
+                <div class="modal-body">
+
+
+                    {#                        <div style="display: none" id="add-alert" class="alert alert-danger" role="alert">...</div>#}
+                    <label for="recipient-name" class="control-label">新业务线:</label>
+                    <br>
+                    <span class="label label-warning" id="id_alert_new_lob">{{ obj.errors.new_lob.0 }}</span>
+                    {{ add_form_obj.new_lob }}
+                    <label for="recipient-name" class="control-label">服务器IP:</label>
+                    <br>
+                    <span class="label label-warning" id="id_alert_ip">{{ obj.errors.ip.0 }}</span>
+                    {{ add_form_obj.ip }}
+                    <label for="recipient-name" class="control-label">服务器端口:</label>
+                    <br>
+                    <span class="label label-warning" id="id_alert_port">{{ obj.errors.port.0 }}</span>
+                    {{ add_form_obj.port }}
+                    <label for="recipient-name" class="control-label">服务器用户名:</label>
+                    <br>
+                    <span class="label label-warning" id="id_alert_username">{{ obj.errors.username.0 }}</span>
+                    {{ add_form_obj.username }}
+                    <label for="recipient-name" class="control-label">服务器密码:</label>
+                    <br>
+                    <span class="label label-warning" id="id_alert_password">{{ obj.errors.password.0 }}</span>
+                    {{ add_form_obj.password }}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">结束</button>
+                    <button id="add-btn" type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">编辑</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        {#              提示框#}
+                        <div style="display: none" id="test" class="alert alert-danger" role="alert">...</div>
+                        <label for="recipient-name" class="control-label">业务线:</label>
+                        {#                        <input type="text" name="lob" class="form-control" id="edit-lob">#}
+                        <input type="hidden" class="tmpid" value="" id="id_ip_id">
+                        {{ edit_form_obj.lob_id }}
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">结束</button>
+                    <button type="button" class="btn btn-primary" id="edit-send">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        {#        $('#exampleModal').on('show.bs.modal', function (event) {#}
+        {#            var button = $(event.relatedTarget) // Button that triggered the modal#}
+        {#            var recipient = button.data('whatever')#}
+        {#            // Extract info from data-* attributes#}
+        {#            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).#}
+        {#            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.#}
+        {#            var modal = $(this)#}
+        {#  modal.find('.modal-title').val(this.val())#}
+        {#            modal.find('.modal-body input').val(recipient)#}
+        {#        });#}
+
+        $('#exampleModal1').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var recipient = button.data('whatever')
+            var recipient1 = button.data('id')
+            var modal = $(this)
+            modal.find("option[value=" + recipient1 + "]").attr('selected', "selected");
+            modal.find('#id_ip_id').val(recipient)
+        });
+        $(function () {
+            bindBtn();
+            bindAdd();
+        });
+        function bindAdd() {
+            $('#add-btn').click(function () {
+
+                var lob = $('#id_new_lob').val();
+                var ip = $("#id_ip").val();
+                var port = $("#id_port").val();
+                var user = $("#id_username").val();
+                var pwd = $("#id_password").val();
+                $.ajax({
+                    url: '/index/add/',
+                    type: "POST",
+                    data: {ip: ip, new_lob: lob, port: port, username: user, password: pwd},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status) {
+                            location.href = "/index/lob/";
+                        } else {
+                            {#                            $('#add-alert').css('display', 'block');#}
+                            $('#id_alert_new_lob').text(data.error.new_lob);
+                            $('#id_alert_ip').text(data.error.ip);
+                            $('#id_alert_port').text(data.error.port);
+                            $('#id_alert_username').text(data.error.username);
+                            $('#id_alert_password').text(data.error.password);
+                        }
+                    }
+                })
+            })
+        }
+
+        function bindBtn() {
+            $('#edit-send').click(function () {
+
+                var hid = $('#id_ip_id').val();
+                var lob = $("#id_lob_id").val();
+                console.log(hid, lob)
+                $.ajax({
+                    url: '/index/edit' + hid,
+                    type: "POST",
+                    data: {lob_id: lob},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status) {
+                            location.href = "/index/lob/";
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+
+    <script>
+        $(function () {
+            $('#exampleModal1').modal('hide')
+        });
+        $(function () {
+            $('#exampleModal').modal('hide')
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#exampleModal1').on('hide.bs.modal', function () {
+                $('#test').css('display', 'none');
+            })
+        });
+        $(function () {
+            $('#exampleModal').on('hide.bs.modal', function () {
+                $('#id_alert_new_lob').text('');
+                $('#id_alert_ip').text('');
+                $('#id_alert_port').text('');
+                $('#id_alert_username').text('');
+                $('#id_alert_password').text('');
+            })
+        });
+    </script>
+{% endblock %}

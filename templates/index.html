@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block bd1 %}
+    <div style="width: 1000px; margin: 0 auto">
+        <h2>
+            <p>用户： {{ username }}</p>
+        </h2>
+        <div class="table-responsive">
+            <table class="table  table-hover">
+                <thead>
+                <tr>
+                    <th>IP地址</th>
+                    <th>服务器端口</th>
+                    <th>服务器用户名</th>
+                    <th>服务器密码</th>
+                    <th>LOB业务线</th>
+                    {#            <th>操作</th>#}
+                </tr>
+                </thead>
+
+                {% for foo in host_l %}
+                    <tr>
+                        <td>{{ foo.ip }}</td>
+                        <td>{{ foo.port }}</td>
+                        <td>{{ foo.host_user }}</td>
+                        <td>{{ foo.host_password }}</td>
+                        <td>{{ foo.lob.title }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    <div style="text-align:center;">
+        <nav aria-label="..." >
+            <ul class="pagination">
+                {{ page_info.page_str | safe }}
+            </ul>
+        </nav>
+    </div>
+    </div>
+{% endblock %}

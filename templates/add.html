@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block bd1 %}
+
+
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 ">
+      <form action="/index/re_add/" method="post" novalidate>
+          <label for="recipient-name" class="control-label">新业务线:</label>
+          <br>
+          <span class="label label-warning">{{ obj.errors.new_lob.0 }}</span>
+            {{ obj.new_lob }}
+
+          <label for="recipient-name" class="control-label">服务器IP:</label>
+            <br>
+          <span class="label label-warning">{{ obj.errors.ip.0 }}</span>
+          {{ obj.ip }}
+          <label for="recipient-name" class="control-label">服务器端口:</label>
+            <br>
+          <span class="label label-warning">{{ obj.errors.port.0 }}</span>
+          {{ obj.port }}
+          <label for="recipient-name" class="control-label">服务器用户名:</label>
+            <br>
+          <span class="label label-warning">{{ obj.errors.username.0 }}</span>
+          {{ obj.username }}
+          <label for="recipient-name" class="control-label">服务器密码:</label>
+            <br>
+          <span class="label label-warning" >{{ obj.errors.password.0 }}</span>
+          {{ obj.password }}
+
+
+
+        <a class="btn btn-default" href="/index/lob_back/" data-dismiss="modal">结束</a>
+        <button type="submit" class="btn btn-primary" id="edit-send">提交</button>
+         <h4 style="color: darkred">{{ error }}</h4>
+
+
+          </form>
+    </div>
+  </div>
+
+
+
+{% endblock %}

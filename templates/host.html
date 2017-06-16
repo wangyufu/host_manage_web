@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block bd1 %}
+    <h1>host 多表连查</h1>
+    <h2>
+        <p>{{ username }}所管理IP</p>
+        {% for obj in user_ip %}
+            <p>ip:{{ obj }}</p>
+        {% endfor %}
+    </h2>
+    <p>原生sql:
+    select host_id,ip from host_manage_user_msg
+    left join host_manage_user_msg_uh on host_manage_user_msg.id=host_manage_user_msg_uh.user_msg_id left join host_manage_host on host_id=host_manage_host.id where username='wang';</p>
+{% endblock %}

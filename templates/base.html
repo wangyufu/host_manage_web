@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'css_js.html' %}
+    <style>
+        body {
+            margin: 0;
+            font-family: 微软雅黑, 华文细黑, 黑体, Arial;
+        }
+
+        .pg-header {
+            height: 48px;
+            background: cadetblue;
+            /**/
+            line-height: 48px;
+        }
+
+        .pg-header .logo {
+            width: 200px;
+            background-color: burlywood;
+            text-align: center;
+            font-size: 26px;
+            color: white;
+            font-family: 微软雅黑, 华文细黑, 黑体, Arial;
+        }
+
+        .pg-body .menus {
+            position: absolute;
+            top: 48px;
+            /*贴着左边*/
+            left: 0;
+            /*贴着下面*/
+            bottom: 0;
+            width: 200px;
+            /*background-color: red;*/
+        }
+
+        .item .title {
+            color: white;
+            text-align: center;
+            height: 40px;
+            background-color: cadetblue;
+            line-height: 40px;
+            border-radius: 10px;
+            border-bottom: 3px solid transparent;
+        }
+
+        .item .title:hover {
+            border-bottom: 3px solid rebeccapurple;
+        }
+
+        .item .menu-content a {
+            text-align: center;
+            display: block;
+        }
+
+        .pg-body .content .content-letf {
+            position: absolute;
+            top: 53px;
+            left: 214px;
+            /*bottom: 0;*/
+            right: 1%;
+            /*margin-right: 10px;*/
+            border: 2px solid #EDEDED;
+        }
+
+        .pg-body .content .content-right {
+            position: absolute;
+            top: 53px;
+            left: 51%;
+            /*bottom: 0;*/
+            right: 10px;
+            /*margin-left: 10px;*/
+            border: 2px solid #EDEDED;
+
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class='pg-header'>
+
+    <div class="row">
+        <div class="col-xs-6 col-md-4">
+            <div class="logo left">运维平台</div>
+        </div>
+        <div class="col-xs-6 col-md-6"></div>
+        <div class="col-xs-6 col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    用户
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                    <li><a href="/logout/">注销</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button"
+           aria-haspopup="true" aria-expanded="false">
+            Dropdown trigger
+            <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+            ...
+        </ul>
+    </div>
+</div>
+
+<div class='pg-body'>
+    <div class="menus">
+        <div class="item">
+            <div class="title" id="m1">
+                <a style="color: white" href="/index/">主页</a></div>
+            <div class="title" id="m1">
+                <a style="color: white" href="/index/lob/">业务线</a>
+            </div>
+            <div class="title" id="m1">
+                <a style="color: white" href="/index/upload/">上传</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content-letf">
+            {% block bd1 %}{% endblock %}
+        </div>
+        {#            <div class="content-right">#}
+        {#                {% block bd2 %}{% endblock %}#}
+        {#            </div>#}
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block bd1 %}
+<form action="/index/upload/" method="post" enctype="multipart/form-data">
+    <input type="file" name="test">
+    <input type="submit" value="上传">
+    {{ v }}
+</form>
+{% endblock %}
