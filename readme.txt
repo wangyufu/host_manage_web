@@ -1,16 +1,16 @@
 host_manage   
 ==    
-×÷Õß:ÍõÓî·ò    
+ä½œè€…:çŽ‹å®‡å¤«    
 
-##³ÌÐò½éÉÜ:     
-    Ê¹ÓÃpython3+¡¢django1.10+£¬Windows¡¢Linux»·¾³Ê¹ÓÃ£»    
-	ÊµÏÖÁËweb»ù´¡¹¦ÄÜ¡£   
+## ç¨‹åºä»‹ç»:     
+    ä½¿ç”¨python3+ã€django1.10+ï¼ŒWindowsã€LinuxçŽ¯å¢ƒä½¿ç”¨ï¼›    
+	å®žçŽ°äº†webåŸºç¡€åŠŸèƒ½ã€‚   
 
-##³ÌÐòÊ¹ÓÃ£º     
-	1¡¢´´½¨host¿â£¬µ¼Èëhost.sql      
-	2¡¢ÔËÐÐ·þÎñ£¬ÓÎÀÀÆ÷´ò¿ª/£¬µÇÂ¼ÓÃ»§ÃûÃÜÂë£ºadmin/123	test/123 root/123     
-	3¡¢µÇÂ¼ºóÌø×ªµ½Ö÷Ò³    
-	4¡¢×ó²àÒµÎñÏßÁ´½Ó£¬¿ÉÒÔÌø×ªÒ³Ãæ    
-	5¡¢µÇÂ¼ºó¿ÉÒÔ×¢Ïú    
-	6¡¢Ôö¼ÓÁËformÑéÖ¤ºÍ·ÖÒ³£¬ËùÓÐµÄajaxÒ²¸ÄÎªformÑéÖ¤      
+## ç¨‹åºä½¿ç”¨ï¼š     
+	1ã€åˆ›å»ºhoståº“ï¼Œå¯¼å…¥host.sql      
+	2ã€è¿è¡ŒæœåŠ¡ï¼Œæ¸¸è§ˆå™¨æ‰“å¼€/ï¼Œç™»å½•ç”¨æˆ·åå¯†ç ï¼šadmin/123	test/123 root/123     
+	3ã€ç™»å½•åŽè·³è½¬åˆ°ä¸»é¡µ    
+	4ã€å·¦ä¾§ä¸šåŠ¡çº¿é“¾æŽ¥ï¼Œå¯ä»¥è·³è½¬é¡µé¢    
+	5ã€ç™»å½•åŽå¯ä»¥æ³¨é”€    
+	6ã€å¢žåŠ äº†forméªŒè¯å’Œåˆ†é¡µï¼Œæ‰€æœ‰çš„ajaxä¹Ÿæ”¹ä¸ºforméªŒè¯      
 
