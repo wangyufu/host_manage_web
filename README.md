@@ -14,3 +14,8 @@ host_manage
 	5、登录后可以注销    
 	6、增加了form验证和分页，所有的ajax也改为form验证      
 
+![](https://github.com/wangyufu/host_manage_web/blob/master/static/login.png)
+
+![](https://github.com/wangyufu/host_manage_web/blob/master/static/index.png)
+
+![](https://github.com/wangyufu/host_manage_web/blob/master/static/lob.png)
